@@ -1,0 +1,26 @@
+Funções de String:
+
+-- a)
+CREATE TABLE nomes (
+    nome VARCHAR(50)
+);
+
+INSERT INTO nomes (nome) VALUES
+    ('Roberta'),
+    ('Roberto'),
+    ('Maria Clara'),
+    ('João');
+
+-- b) Conversão para maiúsculas
+SELECT UPPER(nome) FROM nomes;
+
+-- c) Tamanho de cada nome
+SELECT nome, LENGTH(nome) FROM nomes;
+
+-- d) Adicionar prefixo "Sr." ou "Sra."
+SELECT
+    CASE
+        WHEN nome LIKE '%Maria%' THEN CONCAT('Sra. ', nome)
+        ELSE CONCAT('Sr. ', nome)
+    END AS nome_com_prefixo
+FROM nomes;
