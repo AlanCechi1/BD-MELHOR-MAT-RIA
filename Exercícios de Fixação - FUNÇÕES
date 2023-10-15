@@ -78,4 +78,24 @@ SELECT produto,
     END AS categoria_preco
 FROM produtos;
 
+Função Personalizada:
+
+-- a) Criação da função TOTAL_VALOR
+DELIMITER //
+CREATE FUNCTION TOTAL_VALOR(preco DECIMAL(10, 2), quantidade INT)
+RETURNS DECIMAL(10, 2)
+DETERMINISTIC
+BEGIN
+    DECLARE total DECIMAL(10, 2);
+    SET total = preco * quantidade;
+    RETURN total;
+END;
+//
+DELIMITER ;
+
+-- b) Uso da função para calcular o valor total de cada item
+SELECT produto, preco, quantidade, TOTAL_VALOR(preco, quantidade) AS valor_total FROM produtos;
+
+
+
 
