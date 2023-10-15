@@ -42,3 +42,20 @@ SELECT produto, ABS(quantidade) AS quantidade_absoluta FROM produtos;
 
 -- d) Média dos preços
 SELECT AVG(preco) AS media_precos FROM produtos;
+
+Funções de Data:
+
+-- a)
+CREATE TABLE eventos (
+    data_evento DATE
+);
+
+-- b) Inserir data e hora atual
+INSERT INTO eventos (data_evento) VALUES (NOW());
+
+-- c) Calcular número de dias entre datas
+SELECT DATEDIFF('2023-10-15', '2023-10-10') AS dias_entre_datas;
+
+-- d) Nome do dia da semana
+SELECT data_evento, DAYNAME(data_evento) AS dia_da_semana FROM eventos;
+
