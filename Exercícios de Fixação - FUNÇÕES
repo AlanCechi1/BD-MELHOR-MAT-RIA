@@ -24,3 +24,21 @@ SELECT
         ELSE CONCAT('Sr. ', nome)
     END AS nome_com_prefixo
 FROM nomes;
+
+Funções Numéricas:
+
+-- a)
+CREATE TABLE produtos (
+    produto VARCHAR(50),
+    preco DECIMAL(10, 2),
+    quantidade INT
+);
+
+-- b) Arredondamento dos preços
+SELECT produto, ROUND(preco, 2) AS preco_arredondado FROM produtos;
+
+-- c) Valor absoluto das quantidades
+SELECT produto, ABS(quantidade) AS quantidade_absoluta FROM produtos;
+
+-- d) Média dos preços
+SELECT AVG(preco) AS media_precos FROM produtos;
