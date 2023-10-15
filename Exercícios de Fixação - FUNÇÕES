@@ -59,3 +59,23 @@ SELECT DATEDIFF('2023-10-15', '2023-10-10') AS dias_entre_datas;
 -- d) Nome do dia da semana
 SELECT data_evento, DAYNAME(data_evento) AS dia_da_semana FROM eventos;
 
+Funções de Controle de Fluxo:
+
+-- a) Determinar se um produto está em estoque ou fora de estoque
+SELECT produto,
+    CASE
+        WHEN quantidade > 0 THEN 'Em estoque'
+        ELSE 'Fora de estoque'
+    END AS status_estoque
+FROM produtos;
+
+-- b) Classificar produtos em categorias de preço
+SELECT produto,
+    CASE
+        WHEN preco < 10 THEN 'Barato'
+        WHEN preco >= 10 AND preco <= 50 THEN 'Médio'
+        ELSE 'Caro'
+    END AS categoria_preco
+FROM produtos;
+
+
