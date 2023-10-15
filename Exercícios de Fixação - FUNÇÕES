@@ -110,6 +110,60 @@ SELECT MIN(preco) AS produto_mais_barato FROM produtos;
 -- d) Soma total dos produtos em estoque
 SELECT SUM(IF(quantidade > 0, preco * quantidade, 0)) AS total_em_estoque FROM produtos;
 
+Criando funções:
+
+-- a) Função para cálculo do fatorial
+DELIMITER //
+CREATE FUNCTION CALCULA_FATORIAL(n INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = 1;
+    WHILE n > 0 DO
+        SET resultado = resultado * n;
+        SET n = n - 1;
+    END WHILE;
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+-- b) Função para cálculo do exponencial
+DELIMITER //
+CREATE FUNCTION CALCULA_EXPONENCIAL(base INT, expoente INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = 1;
+    WHILE expoente > 0 DO
+        SET resultado = resultado * base;
+        SET expoente = expoente - 1;
+    END WHILE;
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+-- c) Função para verificar palíndromo
+DELIMITER //
+CREATE FUNCTION VERIFICA_PALINDROMO(palavra VARCHAR(50))
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE inversa VARCHAR(50);
+    SET inversa = REVERSE(palavra);
+    IF palavra = inversa THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END;
+//
+DELIMITER ;
+
+
 
 
 
